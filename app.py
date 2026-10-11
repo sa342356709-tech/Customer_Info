@@ -17,9 +17,9 @@ FIELDS = [
     ("Name", "f_name"),
     ("Contact", "f_contact"),
     ("Building Name", "f_building"),
+    ("Floor", "f_floor"),
     ("Road Name", "f_road_name"),
     ("Road Number", "f_road_no"),
-    ("Floor", "f_floor"),
     ("Block/Sector", "f_block"),
     ("Area", "f_area"),
 ]
@@ -46,7 +46,10 @@ def build_text():
 st.markdown("### Customer Info")
 
 for label, key in FIELDS:
-    st.text_input(label, key=key)
+    if key == "f_area":
+        st.text_area(label, key=key, height=130)
+    else:
+        st.text_input(label, key=key)
 st.text_area("Details Billing Info", key=BILLING_KEY, height=130)
 
 c1, c2 = st.columns(2)
